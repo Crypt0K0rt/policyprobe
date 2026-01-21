@@ -43,7 +43,8 @@ cp .env.example .env
 2. **Start the application**
 
 ```bash
-./scripts/run_dev.sh
+./scripts/run_dev.sh    # Start both servers
+./scripts/stop_dev.sh   # Stop both servers
 ```
 
 Or manually:
@@ -54,19 +55,19 @@ cd backend
 python -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
-uvicorn main:app --reload
+uvicorn main:app --reload --port 5500
 
 # Terminal 2: Frontend
 cd frontend
 npm install
-npm run dev
+npm run dev -- -p 5001
 ```
 
 3. **Open the app**
 
-- Frontend: http://localhost:3000
-- Backend API: http://localhost:8000
-- API Docs: http://localhost:8000/docs
+- Frontend: http://localhost:5001
+- Backend API: http://localhost:5500
+- API Docs: http://localhost:5500/docs
 
 ## Project Structure
 
@@ -196,7 +197,7 @@ python scripts/create_test_files.py
 |----------|-------------|----------|
 | `OPENROUTER_API_KEY` | OpenRouter API key for LLM | Yes |
 | `JWT_SECRET` | Secret for JWT signing (after remediation) | No |
-| `BACKEND_URL` | Backend URL for frontend | No (default: localhost:8000) |
+| `BACKEND_URL` | Backend URL for frontend | No (default: localhost:5500) |
 
 ## License
 
