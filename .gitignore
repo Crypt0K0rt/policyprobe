@@ -1,0 +1,80 @@
+# Dependencies
+node_modules/
+venv/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+.Python
+pip-wheel-metadata/
+*.egg-info/
+.eggs/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Build outputs
+.next/
+out/
+build/
+dist/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*.sublime-*
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Testing
+.coverage
+coverage/
+htmlcov/
+.pytest_cache/
+.nyc_output/
+junit.xml
+
+# Python
+*.py[cod]
+*$py.class
+.mypy_cache/
+.ruff_cache/
+.hypothesis/
+
+# Generated test files (keep test PDFs)
+*.pdf
+*.jpg
+*.jpeg
+*.png
+!test_files/**/*.pdf
+!test_files/**/*.jpg
+!test_files/**/*.png
+!test_files/**/*.txt
+!test_files/**/*.json
+!test_files/**/*.html
+
+# Secrets
+*.pem
+*.key
+*.crt
+credentials.json
+secrets.json
+
+# Misc
+.cache/
+tmp/
+temp/
+*.bak
+*.tmp

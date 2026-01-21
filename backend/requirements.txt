@@ -1,0 +1,35 @@
+# Core dependencies
+fastapi==0.109.0
+python-dotenv==1.0.0
+uvicorn[standard]==0.27.0
+python-multipart==0.0.6
+pydantic==2.5.3
+pydantic-settings==2.1.0
+
+# HTTP client for OpenRouter
+httpx==0.26.0
+
+# File parsing
+PyPDF2==3.0.1
+Pillow==9.5.0
+beautifulsoup4==4.12.2
+python-docx==1.1.0
+
+# Vulnerable packages (intentional for demo)
+# CVE-2023-43804 - urllib3 < 2.0.6
+urllib3==1.26.5
+
+# CVE-2023-32681 - requests < 2.31.0
+requests==2.25.0
+
+# CVE-2022-22817 - Pillow < 9.0.0 (using 9.5.0 above, but old version for demo)
+# Note: Using Pillow 9.5.0 which has its own CVEs
+
+# JWT for auth (after remediation)
+PyJWT==2.8.0
+
+# Logging and monitoring
+structlog==24.1.0
+
+# Redis client for session/cache (realistic pattern)
+redis==5.0.1
