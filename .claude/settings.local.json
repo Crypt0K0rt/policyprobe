@@ -11,7 +11,9 @@
       "Bash(lsof:*)",
       "Bash(xargs kill:*)",
       "Bash(./scripts/stop_dev.sh:*)",
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "Bash(git add:*)",
+      "Bash(git fetch:*)"
     ]
   }
 }
