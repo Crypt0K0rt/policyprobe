@@ -144,15 +144,15 @@ cd frontend && npm audit
 - `package.json` updated with patched versions
 - `npm audit` shows no vulnerabilities
 
-## Key Files for Demo
+## Policy Violation & Guardrail Mapping
 
-| File | Vulnerability | Change After Remediation |
-|------|---------------|--------------------------|
-| `backend/policies/pii_detection.py` | `scan()` is NO-OP | Actual regex scanning |
-| `backend/policies/prompt_injection.py` | `scan()` is NO-OP | Hidden text detection |
-| `backend/agents/auth/agent_auth.py` | `verify()` always returns True | JWT validation |
-| `frontend/package.json` | lodash 4.17.15 | lodash 4.17.21 |
-| `backend/requirements.txt` | requests 2.25.0 | requests 2.31.0 |
+| Policy Category | Individual Policy | Violation File (Unifai Scans) | Guardrail File (Unifai Applies) |
+|-----------------|-------------------|-------------------------------|--------------------------------|
+| **Data Security** | PII in uploaded files | `backend/agents/file_processor.py` | `backend/policies/pii_detection.py` |
+| **AI Threats** | Hidden prompts / Prompt injection | `backend/agents/file_processor.py` | `backend/policies/prompt_injection.py` |
+| **Identity & Access** | Unauthenticated agent calls | `backend/agents/orchestrator.py` | `backend/agents/auth/agent_auth.py` |
+| **Vulnerability** | Vulnerable npm packages | `frontend/package.json` | *(version update)* |
+| **Vulnerability** | Vulnerable Python packages | `backend/requirements.txt` | *(version update)* |
 
 ## Test Files
 
