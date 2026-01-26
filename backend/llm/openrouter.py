@@ -30,7 +30,7 @@ class OpenRouterClient:
     """
 
     BASE_URL = "https://openrouter.ai/api/v1"
-    DEFAULT_MODEL = "openai/gpt-4-turbo-preview"
+    DEFAULT_MODEL = "meta-llama/llama-3-70b-instruct"
 
     def __init__(
         self,
@@ -42,10 +42,10 @@ class OpenRouterClient:
 
         Args:
             api_key: OpenRouter API key (defaults to env var)
-            model: Model to use (defaults to GPT-4 Turbo)
+            model: Model to use (defaults to Llama 3 70B, can be overridden via OPENROUTER_MODEL env var)
         """
         self.api_key = api_key or os.getenv("OPENROUTER_API_KEY")
-        self.model = model or self.DEFAULT_MODEL
+        self.model = model or os.getenv("OPENROUTER_MODEL") or self.DEFAULT_MODEL
 
         if not self.api_key:
             logger.warning(

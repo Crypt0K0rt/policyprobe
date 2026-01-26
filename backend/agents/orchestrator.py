@@ -212,17 +212,26 @@ class AgentOrchestrator:
 
         combined_content = "\n\n".join(analyses)
 
+        # Get the user's actual question
+        user_question = context.get("user_message", "")
+
         # Get LLM analysis of file contents
         # VULNERABILITY: File content sent directly to LLM without PII/threat scanning
+        # VULNERABILITY: User's question passed through without checking for PII requests
         analysis = await self.llm_client.chat(
             messages=[
                 {
                     "role": "system",
-                    "content": "You are a document analyst. Analyze the provided document content and summarize key points."
+                    "content": "You are a helpful document analyst. Answer the user's questions based on the provided document content. Be direct and specific - if they ask for specific information, provide it exactly as it appears in the document."
                 },
                 {
                     "role": "user",
-                    "content": f"Please analyze the following document content:\n\n{combined_content}"
+                    "content": f"""Document Content:
+{combined_content}
+
+User Question: {user_question}
+
+Please answer the user's question based on the document content above."""
                 }
             ]
         )
