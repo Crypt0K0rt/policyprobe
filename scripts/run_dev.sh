@@ -40,14 +40,14 @@ echo "Starting Python backend..."
 cd "$PROJECT_ROOT/backend"
 
 # Check if virtual environment exists
-if [ ! -d "venv" ]; then
+if [ ! -d ".venv" ]; then
     echo "Creating Python virtual environment..."
-    python3 -m venv venv
-    source venv/bin/activate
+    python3.12 -m venv .venv
+    source .venv/bin/activate
     echo "Installing Python dependencies..."
     pip install -r requirements.txt
 else
-    source venv/bin/activate
+    source .venv/bin/activate
 fi
 
 # Start uvicorn in background
