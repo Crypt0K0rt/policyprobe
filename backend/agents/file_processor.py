@@ -1,14 +1,6 @@
 """
 File Processor Agent
 
-Handles file uploads and content extraction.
-Processes PDF, Word, HTML, and image files.
-
-SECURITY NOTES (for Unifai demo):
-- No PII scanning before content extraction
-- No hidden content detection in files
-- No malware/threat scanning
-- Content sent directly to LLM without sanitization
 """
 
 import base64
