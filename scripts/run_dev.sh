@@ -5,6 +5,8 @@
 # This script starts both the frontend and backend servers for development.
 # Run from the project root: ./scripts/run_dev.sh
 #
+# Override Python version: PYTHON_PATH=/path/to/python ./scripts/run_dev.sh
+#
 
 set -e
 
@@ -14,6 +16,10 @@ cd "$PROJECT_ROOT"
 echo "=========================================="
 echo "  PolicyProbe Development Server"
 echo "=========================================="
+echo ""
+
+# Find suitable Python interpreter (3.10+)
+source "$PROJECT_ROOT/scripts/python_helper.sh"
 echo ""
 
 # Check for required environment variables
@@ -42,7 +48,7 @@ cd "$PROJECT_ROOT/backend"
 # Check if virtual environment exists
 if [ ! -d ".venv" ]; then
     echo "Creating Python virtual environment..."
-    python3.12 -m venv .venv
+    "$PYTHON_CMD" -m venv .venv
     source .venv/bin/activate
     echo "Installing Python dependencies..."
     pip install -r requirements.txt

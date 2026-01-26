@@ -5,6 +5,8 @@
 # This script creates a Python virtual environment and installs dependencies.
 # Run from the project root: ./scripts/setup_env.sh
 #
+# Override Python version: PYTHON_PATH=/path/to/python ./scripts/setup_env.sh
+#
 
 set -e
 
@@ -16,6 +18,10 @@ echo "  Setting up Python Environment"
 echo "=========================================="
 echo ""
 
+# Find suitable Python interpreter (3.10+)
+source "$PROJECT_ROOT/scripts/python_helper.sh"
+echo ""
+
 cd "$PROJECT_ROOT/backend"
 
 # Create virtual environment if it doesn't exist
@@ -25,7 +31,7 @@ if [ -d ".venv" ]; then
     echo ""
 else
     echo "Creating Python virtual environment..."
-    python3.12 -m venv .venv
+    "$PYTHON_CMD" -m venv .venv
     echo "✓ Virtual environment created"
     echo ""
 fi
