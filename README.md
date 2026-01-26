@@ -30,7 +30,7 @@ PolicyProbe is a deliberately vulnerable chat agent application designed to demo
 
 ### Setup
 
-1. **Clone and set up environment**
+1. **Copy environment file**
 
 ```bash
 cd policyprobe
@@ -40,21 +40,30 @@ cp .env.example .env
 # Edit .env and add your OPENROUTER_API_KEY
 ```
 
-2. **Start the application**
+2. **Create virtual environment and install dependencies**
 
 ```bash
-./scripts/run_dev.sh    # Start both servers
+./scripts/setup_env.sh    # Creates .venv and installs Python deps
+```
+
+3. **Start the application**
+
+```bash
+./scripts/run_dev.sh    # Start both backend and frontend servers
+```
+
+4. **Stop the application**
+
+```bash
 ./scripts/stop_dev.sh   # Stop both servers
 ```
 
-Or manually:
+**Or run manually:**
 
 ```bash
 # Terminal 1: Backend
 cd backend
-python -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
+source .venv/bin/activate
 uvicorn main:app --reload --port 5500
 
 # Terminal 2: Frontend
@@ -63,7 +72,7 @@ npm install
 npm run dev -- -p 5001
 ```
 
-3. **Open the app**
+5. **Open the app**
 
 - Frontend: http://localhost:5001
 - Backend API: http://localhost:5500
