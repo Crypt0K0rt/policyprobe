@@ -57,7 +57,7 @@ else
 fi
 
 # Start uvicorn in background
-uvicorn main:app --reload --host 0.0.0.0 --port 5500 &
+uvicorn main:app --reload --host 127.0.0.1 --port 5500 &
 BACKEND_PID=$!
 echo "Backend started (PID: $BACKEND_PID)"
 echo "Backend URL: http://localhost:5500"
